@@ -33,4 +33,4 @@ with open(budget_data_path) as csvfile:
     print("Average Change: " + str((sumchange-867884)/(Tot_mon-1)))   
     
  
-#--------3------ caliculate the average
+#--------3------ caliculate the average...
