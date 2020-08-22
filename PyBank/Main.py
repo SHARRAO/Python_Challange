@@ -21,8 +21,9 @@ with open(budget_data_path) as csvfile:
         
         if r[0] != "Date":
             current_month_p_l= float(r[1])
-            change_in_twomonths = (previous_month_p_l -current_month_p_l)
-            sumchange =+ change_in_twomonths
+            if Tot_mon > 1:
+                change_in_twomonths = (previous_month_p_l -current_month_p_l)
+                sumchange =+ change_in_twomonths
             previous_month_p_l= current_month_p_l
 
             Tot_mon=Tot_mon+1 #(code  for total number of months ) 
