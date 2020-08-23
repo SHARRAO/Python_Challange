@@ -49,5 +49,12 @@ with open(budget_data_path) as csvfile:
     print("Greatest Decrease in losses:  " + date_dec + "  ($"+ str(greatest_dec)+")") 
 
     
- 
+f = open("Pybank_results.txt", "w")
+f.write("Total number of months is: " + str(Tot_mon)+"\n")
+f.write("Total: $  "+ str(Tot_Amount)+"\n") 
+f.write("Average Change: " + str((sumchange)/(Tot_mon-1))+"\n")#---(caliculate the average)
+f.write("Greatest  Increase in profits:  "+ date_inc +"  ($"+ str(gratest_increase)+")"+"\n") 
+f.write("Greatest Decrease in losses:  " + date_dec + "  ($"+ str(greatest_dec)+")"+"\n") 
+f.close()
+
 
