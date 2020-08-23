@@ -40,21 +40,20 @@ with open(budget_data_path) as csvfile:
                         greatest_dec = change_in_twomonths
                         date_dec= r[0]
                 
-            previous_month_p_l= current_month_p_l
+            previous_month_p_l= current_month_p_l 
 
-    print("Total number of months is: " + str(Tot_mon))
-    print("Total: $  "+ str(Tot_Amount)) 
-    print("Average Change: " + str((sumchange)/(Tot_mon-1)))#---(caliculate the average)
-    print("Greatest  Increase in profits:  "+ date_inc +"  ($"+ str(gratest_increase)+")") 
-    print("Greatest Decrease in losses:  " + date_dec + "  ($"+ str(greatest_dec)+")") 
+write_file_path = os.path.join("Analysis", "Pybank_results.txt")
+with open(write_file_path , "w", newline="") as write_csvfile:
+    write_file = csv.writer(write_csvfile, delimiter=",")
+    write_file.writerow(["Financial Analysis"])
+    write_file.writerow(["----------------------------"])
+    write_file.writerow([f"Total Months: {Tot_mon}"])
+    write_file.writerow([f"Total: {Tot_Amount}"])
+    write_file.writerow([f"Average  Change: {round(sumchange/(Tot_mon-1),2)}"])
+    write_file.writerow([f"Greatest Increase in Profits: {date_inc} (${gratest_increase})"])
+    write_file.writerow([f"Greatest Decrease in Profits: {date_dec} (${greatest_dec})"])
 
-    
-f = open("Pybank_results.txt", "w")
-f.write("Total number of months is: " + str(Tot_mon)+"\n")
-f.write("Total: $  "+ str(Tot_Amount)+"\n") 
-f.write("Average Change: " + str((sumchange)/(Tot_mon-1))+"\n")#---(caliculate the average)
-f.write("Greatest  Increase in profits:  "+ date_inc +"  ($"+ str(gratest_increase)+")"+"\n") 
-f.write("Greatest Decrease in losses:  " + date_dec + "  ($"+ str(greatest_dec)+")"+"\n") 
-f.close()
-
-
+with open(write_file_path,"r") as csvfile:
+    csvreader=csv.reader(csvfile)
+    for r in csvreader:
+       print(r[0])
